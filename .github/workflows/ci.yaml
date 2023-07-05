@@ -1,9 +1,10 @@
 name: CI
 #on: [push, pull_request, edited]
 on:
+  delete
   #branch_protection_rule:
-  project:
-    types: [created, edited, deleted]
+  #project:
+    #types: [created, edited, deleted]
 jobs:
   build:
     runs-on: ubuntu-latest
