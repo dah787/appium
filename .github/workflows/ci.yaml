@@ -1,7 +1,8 @@
 name: CI
 #on: [push, pull_request, edited]
 on:
-  branch_protection_rule:
+  #branch_protection_rule:
+  project:
     types: [created, edited, deleted]
 jobs:
   build:
