@@ -47,7 +47,8 @@ config.capabilities = [{
   // "appium:deviceName": "Pixel XL v.13",
 
   "appium:automationName": "UiAutomator2",
-  "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.17.1-debug.apk"),
+  "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.7-debug.apk"),
+  // "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.17.1-debug.apk"),
   // "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.21-debug.apk"),
   "appium:autoGrantPermissions": true
 }];
