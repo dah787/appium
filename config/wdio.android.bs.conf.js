@@ -1,4 +1,7 @@
-// to start run: npx wdio config/wdio.android.bs.conf.js
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+/* to start run : npx wdio config/wdio.android.conf.js
+- - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 const path = require('path');
 const config = require('./wdio.shared.conf');
@@ -7,14 +10,15 @@ const allure = require('allure-commandline');
 // ========================
 // Browserstack Credentials
 // ========================
-config.user = 'dahzohomail_QvsKoS';
-config.key = 'Rgys4jzrPx3x4ZWCgWvs';
+config.user = process.env.BS_USER;  // config.user = 'dahzohomail_QvsKoS';
+config.key = process.env.BS_KEY;    // config.key = 'Rgys4jzrPx3x4ZWCgWvs';
 
 // ==================
 // Specify Test Files
 // ==================
 config.specs = [
-  path.join(process.cwd(),'test/specs/android/ab-ts-11p*.spec.js')
+  // path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
+  path.join(process.cwd(),'test/specs/android/ab-u-ts-1001p.spec.js')
 ];
 
 // ============
@@ -36,7 +40,7 @@ config.capabilities = [{
 // ===================
 config.services = [
   ['browserstack', {
-      app: 'bs://2953b7f2aeb201d9445449b1be71274eb854f9a3',
+      app: 'bs://4320aad3d4304d9b6e8f6b35738463ba37c91c8e',
       testObservability: true,
       testObservabilityOptions: {
           projectName: "Your project name goes here",
