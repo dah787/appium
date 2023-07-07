@@ -25,8 +25,3 @@ jobs:
             api-level: 29
             script: npx wdio config/wdio.android.conf.js
         
-        - uses: actions/upload-artifact@v1
-          if: failure()
-            name: logs
-            path: logs
-        
