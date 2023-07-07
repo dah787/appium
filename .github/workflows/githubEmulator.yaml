@@ -1,7 +1,7 @@
-name: Run android test in github runner
+name: Run android test in Github runner
 on: [push, pull_request]
 jobs:
-  Run-mobile-tests:
+  Run-mobile-app-tests:
     runs-on: macos-latest
 
     steps:
@@ -24,4 +24,10 @@ jobs:
           with:
             api-level: 29
             script: npx wdio config/wdio.android.conf.js
+        
+        - uses: actions/upload-artifact@v1
+          if: failure()
+            with:
+              name: logs
+              path: logs
         
