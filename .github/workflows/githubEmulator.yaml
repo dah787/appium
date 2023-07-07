@@ -1,4 +1,4 @@
-name: Run android test in Github runner
+name: Android app tests in Github emulator
 on: [push, pull_request]
 jobs:
   Run-mobile-app-tests:
@@ -7,11 +7,11 @@ jobs:
     steps:
         - name: Pull the project into the runner
           uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 16.20.1
 
         - name: Install
+          uses: actions/setup-node@v1
+          with:
+            node-version: 16.20.1
           run:
             npm install
             npm install -g appium@next
@@ -19,7 +19,7 @@ jobs:
             npx appium &>/dev/null &
             npx appium driver install uiautomator2
 
-        - name: Run appium android tests
+        - name: Run tests
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 29
