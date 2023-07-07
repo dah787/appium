@@ -1,7 +1,7 @@
 name: Android app tests in Github emulator
 on: [push, pull_request]
 jobs:
-  Run-mobile-app-tests:
+  Run mobile app tests:
     runs-on: macos-latest
 
     steps:
