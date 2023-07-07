@@ -7,20 +7,19 @@ jobs:
     steps:
         - name: Pull the project into the runner
           uses: actions/checkout@v2
-
-        - name: Install
-          uses: actions/setup-node@v1
+        - uses: actions/setup-node@v1
           with:
             node-version: 16.20.1
+        
+        - name: Install
           run: npm install
-
+        
         - name: Run tests
           env:
             BS_USER: ${{ secrets.BS_USER }}
             BS_KEY:  ${{ secrets.BS_KEY }}
           run: npx wdio config/wdio.android.bs.conf.js
-
-        - name: Upload artifacts
+        
         - uses: actions/upload-artifact@v1
           if: failure()
           with:
