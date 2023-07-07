@@ -23,5 +23,5 @@ jobs:
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 29
-            script: npx wdio config/wdio.android.bs.conf.js
+            script: npx wdio config/wdio.android.conf.js
         
