@@ -7,11 +7,11 @@ jobs:
     steps:
         - name: Pull the project into the runner
           uses: actions/checkout@v2
-
-        - name: Install
           uses: actions/setup-node@v1
           with:
             node-version: 16.20.1
+          
+        - name: Install
           run:
             npm install
             npm install -g appium@next
