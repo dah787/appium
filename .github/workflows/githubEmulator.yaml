@@ -1,0 +1,24 @@
+name: run android test in github runner
+on: [push, pull_request]
+jobs:
+  run-mobile-tests:
+    runs-on: macos-latest
+
+    steps:
+        - name: pull the project into the runner
+          uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 16.20.1
+
+        - name: install
+          run:
+            npm install -g appium@next
+            appium -v
+            appium &>/dev/null &
+
+        - name: run appium android tests
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 29
+            script: npx wdio config/wdio.android.bs.conf.js
