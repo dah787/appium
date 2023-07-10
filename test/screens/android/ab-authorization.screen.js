@@ -44,7 +44,8 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 2.Ввести номер телефона (уже зарегистрированный) в поле ввода номера телефона.
-  await DSysM.androidKeyboardTypeIn(phoneNumber);
+  // await DSysM.androidKeyboardTypeIn(phoneNumber);
+  await driver.sendKeys(['9','9','9','6','6','4','6','6','0']);
   // 21.Закрыта клавиатура. В поле ввода отображается введенный номер, а также доступны поле ввода пароля и неактивная кнопка Войти:
   // - клавиатура
   await expect(await driver.isKeyboardShown()).toBe(false);
