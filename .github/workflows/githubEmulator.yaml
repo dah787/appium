@@ -25,3 +25,10 @@ jobs:
             api-level: 29
             script: npx wdio config/wdio.android.conf.js
         
+        - name: Upload rseports
+          uses: actions/upload-artifact@v2
+          with:
+            name: Test-Reports
+            path: app/build/reports
+          if: always()
+        
