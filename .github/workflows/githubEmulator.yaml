@@ -22,7 +22,7 @@ jobs:
         - name: Run tests
           uses: reactivecircus/android-emulator-runner@v2
           with:
-            api-level: 31
+            api-level: 30
             script: npx wdio config/wdio.android.conf.js
         
         - name: Upload rseports
