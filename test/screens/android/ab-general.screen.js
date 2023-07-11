@@ -37,7 +37,6 @@ async logOutTheApp() { // appLogOut
     await HomeM.homeNavBtn.click();
     await HomeM.profileButton.waitForDisplayed({timeout: GenM.waitTime + 5000});
     await HomeM.profileButton.click();
-    await HomeM.profileButton.click();
     await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
     await HProfM.appLogOutButton.click();
   }
