@@ -1,6 +1,7 @@
 // const AuthM   = require("../../screens/android/ab-authorization.screen"); // Authorization screen Model
 const HomeM   = require('../../screens/android/ab-home.screen');          // Home screen Model
 const HProfM  = require('../../screens/android/ab-home-profile.screen');  // Home-Profile screen Model
+const GenM    = require('../../screens/android/ab-general.screen');       // General screen Model
 
 class GeneralScreen {
 
@@ -34,7 +35,9 @@ async logOutTheApp() { // appLogOut
 
   if(await HomeM.homeNavBtn.isDisplayed()) {
     await HomeM.homeNavBtn.click();
+    await HomeM.profileButton.waitForDisplayed({timeout: GenM.waitTime + 5000});
     await HomeM.profileButton.click();
+    await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 5000});
     await HProfM.appLogOutButton.click();
   }
 }
