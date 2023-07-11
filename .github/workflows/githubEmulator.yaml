@@ -27,7 +27,7 @@ jobs:
             arch: x86_64
             script: npx wdio config/wdio.android.conf.js
         
-        - name: Upload rseports
+        - name: Upload reports
           uses: actions/upload-artifact@v2
           with:
             name: Test-Reports
