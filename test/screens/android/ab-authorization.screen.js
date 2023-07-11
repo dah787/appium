@@ -1,6 +1,7 @@
 const AppUM = require('../../utils/android/ab-app.utils');        // Application Utilities
 const DSysM = require("../../utils/android/dt-android.utils");    // Android Utilities Model
 const HomeM = require('../../screens/android/ab-home.screen');    // Home screen Model
+const GenM  = require('../../screens/android/ab-general.screen'); // General screen Model
 const InitM = require('../../screens/android/ab-initial.screen'); // Initial screen Model
 
 class AuthorizationScreen extends InitM {
@@ -44,15 +45,15 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 2.Ввести номер телефона (уже зарегистрированный) в поле ввода номера телефона.
-  // await DSysM.androidKeyboardTypeIn(phoneNumber);
-  await driver.sendKeys(['9','9','9','6','6','4','6','6','0']);
+  await DSysM.androidKeyboardTypeIn(phoneNumber);
+  // await driver.sendKeys(['9','9','9','6','6','4','6','6','0']);
   // 21.Закрыта клавиатура. В поле ввода отображается введенный номер, а также доступны поле ввода пароля и неактивная кнопка Войти:
   // - клавиатура
   await expect(await driver.isKeyboardShown()).toBe(false);
   // - введенный номер
   await expect(this.phoneNumInputField).toHaveText(phoneNumber);
   // - кнопка Войти
-                                                                                                  // await expect(this.signinButton).toBeDisabled();
+  await expect(this.signinButton).toBeDisabled();
 
   // 3.Нажать поле ввода пароля.
   await this.passwordInputField.click();
@@ -87,6 +88,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
 
   // 7.Ввести пин-код.
   await AppUM.appKeyboardTypeIn(pinCode);
+  await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
   // 71.Отображается главный экран приложения (активны навигационная кнопка Home и вкладка Аккаунт), где доступны имя пользователя, текст Общий баланс и... одно из следующего:
   // - сумма общего баланса (если пользователь уже имеет карту банка).
   // - кнопка Заказать или добавить карту (если пользователь пока не имеет карту банка):
