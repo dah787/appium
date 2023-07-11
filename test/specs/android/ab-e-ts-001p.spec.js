@@ -10,7 +10,7 @@ const RegM    = require("../../screens/android/ab-regisration.screen");   // Reg
 const ServM   = require('../../screens/android/ab-services.screen');      // Services screen Model
 // npx wdio config/wdio.android.conf.js
 
-describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230704| > Тестов 9 (не завершены 6) <', () => {
+describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230711| > Тестов 9 (не завершены 6) <', () => {
 
   let itCounter = 0;
   beforeEach(async () => {
@@ -184,7 +184,7 @@ it.only('ab-e-tc-002p: Авторизация', async () => {
   const phoneNum_pass = CardsD.phoneNum_5_pass;
 
   // П.1,1-7.Выполнить авторизацию пользователя (в приложении).
-  await AuthM.customerAuthorization_Try(
+  await AuthM.customerAuthorization(
     AuthM.appLanguage_Ru, phoneNum, phoneNum_pass, AuthM.pinCode_Expected);
   
 });
