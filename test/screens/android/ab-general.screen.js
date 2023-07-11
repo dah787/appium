@@ -24,21 +24,27 @@ async logOutTheApp() { // appLogOut
   if( await driver.isKeyboardShown() ) await driver.hideKeyboard();
 
   // * Выйти из приложения
+let itCounter = 0;
   while (
     // !(await $('//*[@resource-id="com.fincube.apexbank.debug:id/languageButton"]').isDisplayed()) &&
     // !(await AuthM.languageButton.isDisplayed()) &&
     !(await this.languageButton_from_20230704.isDisplayed()) &&
     !(await HomeM.homeNavBtn.isDisplayed())
     ) {
+await driver.saveScreenshot('view_shots/logOutTheApp_0_afterCycle_' + (itCounter + 1) + '.png');
     await driver.back();
   }
 
   if(await HomeM.homeNavBtn.isDisplayed()) {
+await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 0 + '.png');
     await HomeM.homeNavBtn.click();
     await HomeM.profileButton.waitForDisplayed({timeout: GenM.waitTime + 5000});
+await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
     await HomeM.profileButton.click();
     await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
+await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
     await HProfM.appLogOutButton.click();
+await driver.saveScreenshot('view_shots/logOutTheApp_4_afterClick_' + 'appLogOutButton' + '.png');
   }
 }
 
