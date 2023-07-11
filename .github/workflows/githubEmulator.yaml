@@ -7,7 +7,7 @@ jobs:
     steps:
         - name: Pull the project into the runner
           uses: actions/checkout@v3
-        - uses: actions/setup-node@v1
+        - uses: actions/setup-node@v3
           with:
             node-version: 16.20.1
         
@@ -26,12 +26,12 @@ jobs:
             #api-level: 32
             #target: google_apis
             #arch: x86_64
+            #profile: Nexus 6
             script: npx wdio config/wdio.android.conf.js
         
         - name: Upload reports
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v3
           with:
             name: Test-Reports
             path: view_shots
           if: always()
-        
