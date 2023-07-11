@@ -34,10 +34,10 @@ config.capabilities = [{
   // "appium:platformVersion": "11.0",
   // "appium:deviceName": "Pixel 4 v.11",
   
-  // "appium:platformVersion": "12L",
-  // "appium:deviceName": "Pixel 4 v.12L",
   "appium:platformVersion": "12L",
-  "appium:deviceName": "Pixel 4a v.12L",
+  "appium:deviceName": "Pixel 4 v.12L",
+  // "appium:platformVersion": "12L",
+  // "appium:deviceName": "Pixel 4a v.12L",
 
   // "appium:platformVersion": "13.0",
   // "appium:deviceName": "Pixel 5 v.13",
@@ -47,7 +47,6 @@ config.capabilities = [{
   // "appium:deviceName": "Pixel XL v.13",
 
   "appium:automationName": "UiAutomator2",
-  // "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.7-debug.apk"),
   "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.17.1-debug.apk"),
   // "appium:app": path.join(process.cwd(), "app/android/Apexbank-1.0.21-debug.apk"),
   "appium:autoGrantPermissions": true
