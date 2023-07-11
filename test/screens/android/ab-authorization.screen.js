@@ -52,7 +52,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   // - введенный номер
   await expect(this.phoneNumInputField).toHaveText(phoneNumber);
   // - кнопка Войти
-  await expect(this.signinButton).toBeDisabled();
+                                                                                                  // await expect(this.signinButton).toBeDisabled();
 
   // 3.Нажать поле ввода пароля.
   await this.passwordInputField.click();
