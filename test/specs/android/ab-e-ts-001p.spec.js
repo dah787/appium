@@ -184,7 +184,7 @@ it.only('ab-e-tc-002p: Авторизация', async () => {
   const phoneNum_pass = CardsD.phoneNum_5_pass;
 
   // П.1,1-7.Выполнить авторизацию пользователя (в приложении).
-  await AuthM.customerAuthorization(
+  await AuthM.customerAuthorization_Try(
     AuthM.appLanguage_Ru, phoneNum, phoneNum_pass, AuthM.pinCode_Expected);
   
 });
