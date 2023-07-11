@@ -37,7 +37,7 @@ await driver.saveScreenshot('view_shots/logOutTheApp_0_afterCycle_' + (itCounter
 
   if(await HomeM.homeNavBtn.isDisplayed()) {
 await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 0 + '.png');
-    await HomeM.homeNavBtn.click();
+    // await HomeM.homeNavBtn.click();
     await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
 await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
     await HomeM.profileLayout.click(); // profileButton
