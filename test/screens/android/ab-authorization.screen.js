@@ -95,7 +95,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   // + элемент профиля клиента
   await expect(HomeM.profileLayout).toBeExisting();
   // - имя пользователя
-  await expect(HomeM.profileNameNadiaPage).toHaveText(HomeM.profileNameNadiaPage_Expected);
+  await expect(HomeM.profileName_NadiaPage).toHaveText(HomeM.profileName_NadiaPage_Expected);
   // - вкладка Аккаунт
   await expect(HomeM.accountTabItemRu).toBeExisting();
   // - текст Общий баланс
@@ -175,7 +175,7 @@ await driver.saveScreenshot('view_shots/customerAuth_afterStep_' + 71 + '.png');
   // + элемент профиля клиента
   await expect(HomeM.profileLayout).toBeExisting();
   // - имя пользователя
-  await expect(HomeM.profileNameNadiaPage).toHaveText(HomeM.profileNameNadiaPage_Expected);
+  await expect(HomeM.profileName_NadiaPage).toHaveText(HomeM.profileName_NadiaPage_Expected);
   // - вкладка Аккаунт
   await expect(HomeM.accountTabItemRu).toBeExisting();
   // - текст Общий баланс

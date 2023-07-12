@@ -35,19 +35,19 @@ await driver.saveScreenshot('view_shots/logOutTheApp_0_afterCycle_' + (itCounter
     await driver.back();
   }
 
-//  if(await HomeM.homeNavBtn.isDisplayed()) {
-//await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 'homeNavBtn' + '.png');
-//    await HomeM.homeNavBtn.click();
-//    await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
-//await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
+  if(await HomeM.homeNavBtn.isDisplayed()) {
+await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 'homeNavBtn' + '.png');
+    await HomeM.homeNavBtn.click();
+    await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
+await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
 //     await HomeM.profileLayout.click(); // profileButton
 //     await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
 // await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
 //     await HProfM.appLogOutButton.click();
 // await driver.saveScreenshot('view_shots/logOutTheApp_4_afterClick_' + 'appLogOutButton' + '.png');
-//  }
+  }
 
-  await HomeM.profileLayout.click(); // profileButton
+  await HomeM.profileName_NadiaPage.click(); // profileButton // profileLayout
   await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
 await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
   await HProfM.appLogOutButton.click();

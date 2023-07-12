@@ -1,8 +1,8 @@
 class HomeScreen {
 
 /* CONSTANTS */
-profileNameNadiaPage_Expected = 'Nadia Page'; // related to '99 966 46 60'
-// profileNameNadiaPage_Expected = 'Дмитрий'; // related to '99 966 46 60'
+profileName_NadiaPage_Expected = 'Nadia Page'; // related to '99 966 46 60'
+// profileName_NadiaPage_Expected = 'Дмитрий'; // related to '99 966 46 60'
 totalBalanceTitleRu_Expected = 'Общий баланс';
 balanceHidingSymbols = '--.-- UZS';
 
@@ -23,7 +23,7 @@ get profileLayout() {
   return $('//*[@resource-id="com.fincube.apexbank.debug:id/profileLayout"]');}
 get profileButton() {
   return $('//*[@resource-id="com.fincube.apexbank.debug:id/profileButton"]');}
-get profileNameNadiaPage() {
+get profileName_NadiaPage() {
   return $('//android.widget.TextView[@text="Nadia Page"]');}
   // return $('//android.widget.TextView[@text="Дмитрий"]');}
 
