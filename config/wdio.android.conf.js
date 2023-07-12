@@ -29,14 +29,14 @@ config.specs = [
 config.capabilities = [{
   "appium:platformName": "Android",
 
-  "appium:platformVersion": "10.0",
+  // "appium:platformVersion": "10.0",
   // "appium:deviceName": "Nexus S v.10",
-  "appium:deviceName": "Pixel 4 v.10",
+  // "appium:deviceName": "Pixel 4 v.10",
   // "appium:platformVersion": "11.0",
   // "appium:deviceName": "Pixel 4 v.11",
   
-  // "appium:platformVersion": "12L",
-  // "appium:deviceName": "Pixel 4 v.12L",
+  "appium:platformVersion": "12L",
+  "appium:deviceName": "Pixel 4 v.12L",
   // "appium:platformVersion": "12L",
   // "appium:deviceName": "Pixel 4a v.12L",
 
@@ -81,8 +81,12 @@ config.mochaOpts = {
 };
 
 config.afterTest = async function(test, context, { error /*, result, duration, passed, retries*/ }) {
+  let counter = 1;
   if (error) {
-      await driver.takeScreenshot();
+    await driver.takeScreenshot();
+    await driver.saveScreenshot('view_shots/app-screen_testError-' + counter + '.png');
+    // const ffmpeg = require('@ffmpeg-installer/ffmpeg');
+    // console.log('\n --> console ffmpeg = ' + ffmpeg.path, ffmpeg.version + '\n');
   }
 };
 
