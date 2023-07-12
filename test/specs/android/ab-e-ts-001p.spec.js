@@ -12,10 +12,10 @@ const ServM   = require('../../screens/android/ab-services.screen');      // Ser
 
 // const video = require('test-video-recorder');
 // const video = require("../../../node_modules/test-video-recorder/index");
-const video = require("../../../node_modules/test-video-recorder");
-const path = require("path");
+// const video = require("../../../node_modules/test-video-recorder");
+// const path = require("path");
 // video.setPath(path.join(__dirname, "/log"));
-video.setPath(path.join(process.cwd(), "/view_shots"));
+// video.setPath(path.join(process.cwd(), "/view_shots"));
 // path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
 
 describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230712| > Тестов 9 (не завершены 6) <', () => {
@@ -33,7 +33,7 @@ describe('ab-e-ts-001p: Тестирование процессов (дымов�
     await driver.startActivity(GenM.appPackage, GenM.appActivity);
 
 // Start video before each test in this bloc
-video.start(this.currentTest, 'mocha');
+// video.start(this.currentTest, 'mocha');
 
   });
   afterEach(async () => { 
@@ -48,7 +48,7 @@ video.start(this.currentTest, 'mocha');
     await GenM.logOutTheApp();
 
 // Stop each video after test completes
-  video.stop();
+// video.stop();
 
   });
   after(async () => {
