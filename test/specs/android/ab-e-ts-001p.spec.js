@@ -10,6 +10,14 @@ const RegM    = require("../../screens/android/ab-regisration.screen");   // Reg
 const ServM   = require('../../screens/android/ab-services.screen');      // Services screen Model
 // npx wdio config/wdio.android.conf.js
 
+// const video = require('test-video-recorder');
+// const video = require("../../../node_modules/test-video-recorder/index");
+const video = require("../../../node_modules/test-video-recorder");
+const path = require("path");
+// video.setPath(path.join(__dirname, "/log"));
+video.setPath(path.join(process.cwd(), "/view_shots"));
+// path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
+
 describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230712| > Тестов 9 (не завершены 6) <', () => {
 
   let itCounter = 0;
@@ -23,6 +31,10 @@ describe('ab-e-ts-001p: Тестирование процессов (дымов�
   
     // * Открыть начальную страницу приложения
     await driver.startActivity(GenM.appPackage, GenM.appActivity);
+
+// Start video before each test in this bloc
+video.start(this.currentTest, 'mocha');
+
   });
   afterEach(async () => { 
     // * Снимок экрана для контроля
@@ -34,6 +46,10 @@ describe('ab-e-ts-001p: Тестирование процессов (дымов�
 
     // * Выйти из приложения
     await GenM.logOutTheApp();
+
+// Stop each video after test completes
+  video.stop();
+
   });
   after(async () => {
     // * Закрыть приложение
@@ -144,7 +160,7 @@ it('ab-e-tc-001p: Регистрация !Тест не завершен: тре
   // ...
 });
 
-it.only('ab-e-tc-002p: Авторизация', async () => {
+it('ab-e-tc-002p: Авторизация', async () => {
 /** > базовые тесты (см. файл ТК 1 (Регистрация)):
  * - 2 Стр. выбор языка, выбор языка (Русский) (ш10: П.1)
  * - 59 Стр. аутентификации, поле "Пароль":валидный (ш10: 1-5)
@@ -357,7 +373,7 @@ it('ab-e-tc-003p: Добавление карты !Тест не заверше�
   // ...
 });
 
-it('ab-e-tc-004p: Редактирование карты', async () => {
+it.only('ab-e-tc-004p: Редактирование карты', async () => {
   /** > базовые тесты... <
   > Можно изменить некоторые параметры карты банковской <
 ПРЕДУСЛОВИЯ:
