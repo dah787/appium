@@ -39,6 +39,11 @@ async appKeyboardTypeIn(value) {
   // symbolsArray.forEach(element => {
   for (const element of symbolsArray) {
     // /*отладка*/ console.log('\n --> symbolsArray.forEach(element) = ' + element + '\n');
+
+    
+          await driver.pause(5000); // для БраузерСтак
+
+    
     switch (element) {
       // цифры
       case '0':
