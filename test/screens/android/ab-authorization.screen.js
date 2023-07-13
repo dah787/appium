@@ -91,7 +91,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
 
   
         // await AppUM.appKeyboardTypeIn(pinCode);
-        await driver.sendKeys(['0','1','2','3']); // для БраузерСтак
+        await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
   
   
   // 61.Символы пин-кода активируются по мере ввода, а после ввода последнего символа пин-кода отображается экран Введите свой PIN-код:
@@ -104,7 +104,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   
   
         // await AppUM.appKeyboardTypeIn(pinCode);
-        await driver.sendKeys(['0','1','2','3']); // для БраузерСтак
+        await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
         // ОТКЛЮЧЕНО ДЛЯ БРАУЗЕРСТАК: await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
   
   
