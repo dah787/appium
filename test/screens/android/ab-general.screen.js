@@ -24,34 +24,29 @@ async logOutTheApp() { // appLogOut
   if( await driver.isKeyboardShown() ) await driver.hideKeyboard();
 
   // * Выйти из приложения
-let itCounter = 0;
+// /*отладка*/ let itCounter = 0;
   while (
     // !(await $('//*[@resource-id="com.fincube.apexbank.debug:id/languageButton"]').isDisplayed()) &&
     // !(await AuthM.languageButton.isDisplayed()) &&
     !(await this.languageButton_from_20230704.isDisplayed()) &&
     !(await HomeM.homeNavBtn.isDisplayed())
     ) {
-await driver.saveScreenshot('view_shots/logOutTheApp_0_afterCycle_' + (itCounter + 1) + '.png');
+// /*отладка*/ await driver.saveScreenshot('view_shots/logOutTheApp_0_afterCycle_' + (itCounter + 1) + '.png');
     await driver.back();
   }
 
   if(await HomeM.homeNavBtn.isDisplayed()) {
-await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 'homeNavBtn' + '.png');
+// /*отладка*/ await driver.saveScreenshot('view_shots/logOutTheApp_1_beforeClick_' + 'homeNavBtn' + '.png');
     await HomeM.homeNavBtn.click();
     await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
-await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
-//     await HomeM.profileLayout.click(); // profileButton
-//     await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
-// await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
-//     await HProfM.appLogOutButton.click();
-// await driver.saveScreenshot('view_shots/logOutTheApp_4_afterClick_' + 'appLogOutButton' + '.png');
+// /*отладка*/ await driver.saveScreenshot('view_shots/logOutTheApp_2_afterClick_' + 'homeNavBtn' + '.png');
+    await HomeM.profileLayout.click(); // profileButton
+    await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 5000});
+// /*отладка*/ await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
+    await HProfM.appLogOutButton.click();
+// /*отладка*/ await driver.saveScreenshot('view_shots/logOutTheApp_4_afterClick_' + 'appLogOutButton' + '.png');
   }
 
-  await HomeM.profileName_NadiaPage.click(); // profileButton // profileLayout
-  await HProfM.appLogOutButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
-await driver.saveScreenshot('view_shots/logOutTheApp_3_afterClick_' + 'profileButton' + '.png');
-  await HProfM.appLogOutButton.click();
-await driver.saveScreenshot('view_shots/logOutTheApp_4_afterClick_' + 'appLogOutButton' + '.png');
 }
 
 

@@ -108,7 +108,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
 }
 
 
-async customerAuthorization_Try(language, phoneNumber, password, pinCode) {
+/*отладка*/ async customerAuthorization_Debug(language, phoneNumber, password, pinCode) {
   // П.1. Запустить приложение (автоматически), ...
   await this.selectLanguage(language);
   
