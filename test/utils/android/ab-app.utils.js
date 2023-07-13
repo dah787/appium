@@ -41,7 +41,7 @@ async appKeyboardTypeIn(value) {
     // /*отладка*/ console.log('\n --> symbolsArray.forEach(element) = ' + element + '\n');
 
     
-          await driver.pause(50); // замедляем нажатия для приложания, ГитХаб и БраузерСтак
+          await driver.pause(100); // замедляем нажатия для приложания, ГитХаб и БраузерСтак
 
     
     switch (element) {
