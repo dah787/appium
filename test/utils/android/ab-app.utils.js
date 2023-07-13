@@ -41,7 +41,7 @@ async appKeyboardTypeIn(value) {
     // /*отладка*/ console.log('\n --> symbolsArray.forEach(element) = ' + element + '\n');
 
     
-          await driver.pause(1000); // для БраузерСтак
+          await driver.pause(500); // для БраузерСтак
 
     
     switch (element) {
