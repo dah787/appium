@@ -20,7 +20,7 @@ jobs:
             npx appium driver install uiautomator2
 
         - name: Run tests
-          uses: reactivecircus/android-emulator-runner@v1
+          uses: reactivecircus/android-emulator-runner@v3 #...-emulator-runner@v2
           with:
             api-level: 29
             #api-level: 32
