@@ -88,7 +88,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
 
   // 7.Ввести пин-код.
   await AppUM.appKeyboardTypeIn(pinCode);
-  await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
+            // ОТКЛЮЧЕНО В ГИТХАБ, ЧТОБЫ ПРОЙТИ АВТОРИЗАЦИЮ await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
   // 71.Отображается главный экран приложения (активны навигационная кнопка Home и вкладка Аккаунт), где доступны имя пользователя, текст Общий баланс и... одно из следующего:
   // - сумма общего баланса (если пользователь уже имеет карту банка).
   // - кнопка Заказать или добавить карту (если пользователь пока не имеет карту банка):
