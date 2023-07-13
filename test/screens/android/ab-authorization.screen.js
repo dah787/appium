@@ -45,8 +45,12 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 2.Ввести номер телефона (уже зарегистрированный) в поле ввода номера телефона.
-  await DSysM.androidKeyboardTypeIn(phoneNumber);
-  // await driver.sendKeys(['9','9','9','6','6','4','6','6','0']); // для БраузерСтак
+
+  
+        // await DSysM.androidKeyboardTypeIn(phoneNumber);
+        await driver.sendKeys(['9','9','9','6','6','4','6','6','0']); // для БраузерСтак
+
+  
   // 21.Закрыта клавиатура. В поле ввода отображается введенный номер, а также доступны поле ввода пароля и неактивная кнопка Войти:
   // - клавиатура
   await expect(await driver.isKeyboardShown()).toBe(false);
@@ -61,8 +65,12 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 4.Ввести пароль.
-  await DSysM.androidKeyboardTypeIn(password);
-  // await driver.sendKeys(['q','w','e','r','t','y','1','2','3']); // для БраузерСтак
+
+  
+        // await DSysM.androidKeyboardTypeIn(password);
+        await driver.sendKeys(['q','w','e','r','t','y','1','2','3']); // для БраузерСтак
+
+  
   // 41.В поле ввода введенный пароль отображается звездочками, кнопка Войти активна (при вводе не менее определенного числа символов пароля):
   // - пароль отображается звездочками ?
   // - кнопка Войти
