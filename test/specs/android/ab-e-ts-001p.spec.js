@@ -18,7 +18,7 @@ const ServM   = require('../../screens/android/ab-services.screen');      // Ser
 // video.setPath(path.join(process.cwd(), "/view_shots"));
 // path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
 
-describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230712| > Тестов 9 (не завершены 6) <', () => {
+describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230713| > Тестов 9 (не завершены 6) <', () => {
 
   let itCounter = 0;
   beforeEach(async () => {
@@ -455,22 +455,26 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   // 3.1.Открыт экран редактирования карты, где доступны изображение карты (с текущими дизайном, названием, балансом, номером, сроком действия), кнопки выбора ее дизайна, переключатель Основной, поле ввода названия карты с кнопкой очистки названия, кнопка Подтвердить.
 
   // 4.Нажать кнопку дизайна карты (любую).
-  // await HCardM.cardBackgroundImageButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
-  HCardM.waitForScreenDisplayed_cardSettings();
+  await HCardM.cardBackgroundImageButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
+  // await HCardM.waitForScreenDisplayed_cardSettings();
   let raw_array = await HCardM.cardBackgroundImageButtons;
+// /*отладка*/ console.log('\n --> raw_array ' + raw_array + '\n');
+// await driver.pause(5000);
+
   let data_array = [];
   let elementAttributeKey = 'resource-id';
   let elementAttributeValue = 'com.fincube.apexbank.debug:id/bg_image';
   await AppUM.generateElementListInArray(raw_array, data_array, elementAttributeKey, elementAttributeValue);
-  for (const element of data_array) {
-    // /*отладка*/ console.log('\n --> element ' + element + '\n');
 
+  await expect(data_array.length).toBeGreaterThan(0);
+
+  for(let i = 0, l = data_array.length; i < l; i++) { // for (const element of data_array) {
     // let nextElement1 = await HomeM.cardBackgroundImageButtonChecked;
     // let elementAttributeValueCurrent1 = await nextElement1.getAttribute('resource-id');
     // /*отладка*/ console.log('\n --> elementAttributeValueCurrent1 = ' + elementAttributeValueCurrent1 + '\n');
-    
-    await element.click();
-    
+  
+    await data_array[await AppUM.generateRandomCharsOfSet(1,'012345')].click();
+
     // let nextElement = await element.nextElement();
     // let elementAttributeValueCurrent = await nextElement.getAttribute('resource-id');
 
@@ -497,9 +501,10 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   if(await HCardM.cardViewFrontNameField.isExisting()) {
     name = await HCardM.cardViewFrontNameField.getText();
   }
-  const number = await HCardM.cardViewFrontNumberField.getText();
-  // /*отладка*/ console.log('\n --> number = ' + number + '\n');
-  // await driver.pause(5000);
+  const cardNumber = await HCardM.cardViewFrontNumberField.getText();
+// /*отладка*/ console.log('\n --> cardNumber = ' + cardNumber + '\n');
+// await driver.pause(5000);
+
   // 7.Изменить название карты.
   // await DSysM.androidKeyboardTypeIn('-123');
   await DSysM.androidKeyboardTypeIn(randomChars);
@@ -537,32 +542,39 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
 
   // 11.Вернуться на экран Мои карты, нажимая кнопку Назад.
   await DSysM.androidPressBackButton(2);
-  // await HCardM.myCardsScreenTitleRu.waitForDisplayed({timeout: GenM.waitTime + 15000});
-  HCardM.waitForScreenDisplayed_myCards();
+  await HCardM.cardViewFrontNameField.waitForDisplayed({timeout: GenM.waitTime + 15000});
+  // HCardM.waitForScreenDisplayed_myCards();
   // *.Создать массив элементов.
   raw_array = await HCardM.cardsBlockItems;
   data_array = [];
   elementAttributeKey = 'resource-id';
-  elementAttributeValue = 'com.fincube.apexbank.debug:id/bank_card_view_number';
-  await AppUM.generateElementListInArray(raw_array, data_array, elementAttributeKey, elementAttributeValue);
-// await driver.pause(5000);
+  let elementAttributeValue_1 = 'com.fincube.apexbank.debug:id/bank_card_view_name';
+  let elementAttributeValue_2 = 'com.fincube.apexbank.debug:id/bank_card_view_number';
+  await AppUM.generateElementListInArray_Debug(raw_array, data_array, elementAttributeKey, elementAttributeValue_1, elementAttributeValue_2);
+// /*отладка*/ console.log('\n --> data_array ' + data_array + '\n');
+// /*отладка*/ await driver.pause(5000);
+
   // 11.1.Открыт экран Мои карты, где изменявшаяся карта имеет отредактированные дизайн и название:
-  let currentNumber = '';
-  for (const element of data_array) {
-    currentNumber = await element.getText();
-    // /*отладка*/ console.log('\n --> currentNumber = ' + currentNumber + '\n');
-    if(currentNumber == number) {
-      // /*отладка*/ console.log('\n --> currentNumber-1 = ' + currentNumber + '\n' +
-      //   ' --> cardViewFrontNameField.getText() = ' + await HCardM.cardViewFrontNameField.getText() + '\n'
-      // );
-      // await driver.pause(5000);
-      // - название
-      await expect(HCardM.cardViewFrontNameField).toHaveText(cardName);
+  let currentCardItem = '';
+  for(let i = 0, l = data_array.length; i < l; i++) { // for (const element of data_array)
+    currentCardItem = await data_array[i].getText();
       // /*отладка*/ console.log(
-      //   '\n --> ' + await HCardM.cardViewFrontNameField.getText() + ' = await HCardM.cardViewFrontNameField.getText();' +
-      //   '\n --> ' + cardName + ' = cardName' + '\n');
+      //   '\n' + cardNumber + ' = cardNumber' +
+      //   '\n' + currentCardItem + ' = currentCardItem' +
+      //   '\n');
+    if(currentCardItem == cardNumber) {
+        // /*отладка ------------------------------------------------------------ */
+        // console.log(
+        //   '\n --> ' + cardNumber + ' = cardNumber' +
+        //   '\n --> ' + currentCardItem + ' = currentCardItem' +
+        //   '\n --> ' + cardName + ' = cardName' +
+        //   '\n --> ' + await data_array[i-1].getText() + ' = currentCardName' +
+        //   '\n');
+        // await driver.pause(5000);
+        // /*отладка ------------------------------------------------------------ */
+      // - название
+      await expect(data_array[i-1]).toHaveText(cardName); // expect(HCardM.cardViewFrontNameField).
     }
-    // /*отладка*/ console.log('\n --> await element.getText(); = ' + await element.getText() + '\n');
   }
 });
 
@@ -1022,9 +1034,16 @@ it('ab-e-tc-008p: Проверка баланса', async () => {
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-it.skip('ab-x-ts-000x: Отладка', async () => {
+it.skip('ab-d-ts-002x: Отладка ab-e-tc-004p', async () => {
   // > Вывести информацию о тесте в консоль
-  const tcNum = 'AB-X-TC-000';
+  const tcNum = 'ab-d-ts-002x';
+  /*отладка*/ console.log('\n --> tcNum = ' + tcNum + '\n');
+
+
+});
+it.skip('ab-d-ts-001x: Отладка', async () => {
+  // > Вывести информацию о тесте в консоль
+  const tcNum = 'ab-d-ts-001x';
   /*отладка*/ console.log('\n --> tcNum = ' + tcNum + '\n');
 
   const phoneNumber = '99 392 30 75';
