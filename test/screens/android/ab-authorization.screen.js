@@ -45,12 +45,8 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 2.Ввести номер телефона (уже зарегистрированный) в поле ввода номера телефона.
-
-  
-        // await DSysM.androidKeyboardTypeIn(phoneNumber);
-        await driver.sendKeys(['9','9','9','6','6','4','6','6','0']); // для БраузерСтак
-
-  
+  await DSysM.androidKeyboardTypeIn(phoneNumber);
+  // await driver.sendKeys(['9','9','9','6','6','4','6','6','0']); // для БраузерСтак
   // 21.Закрыта клавиатура. В поле ввода отображается введенный номер, а также доступны поле ввода пароля и неактивная кнопка Войти:
   // - клавиатура
   await expect(await driver.isKeyboardShown()).toBe(false);
@@ -65,12 +61,8 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect(await driver.isKeyboardShown()).toBe(true);
 
   // 4.Ввести пароль.
-
-  
-        // await DSysM.androidKeyboardTypeIn(password);
-        await driver.sendKeys(['q','w','e','r','t','y','1','2','3']); // для БраузерСтак
-
-  
+  await DSysM.androidKeyboardTypeIn(password);
+  // await driver.sendKeys(['q','w','e','r','t','y','1','2','3']); // для БраузерСтак
   // 41.В поле ввода введенный пароль отображается звездочками, кнопка Войти активна (при вводе не менее определенного числа символов пароля):
   // - пароль отображается звездочками ?
   // - кнопка Войти
@@ -88,12 +80,8 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
   await expect( await AppUM.appKeyboardNum_3.isEnabled() ).toBe(true);
 
   // 6.Ввести пин-код.
-
-  
-        // await AppUM.appKeyboardTypeIn(pinCode);
-        await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
-  
-  
+  await AppUM.appKeyboardTypeIn(pinCode);
+  // await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
   // 61.Символы пин-кода активируются по мере ввода, а после ввода последнего символа пин-кода отображается экран Введите свой PIN-код:
   // - символы пин-кода ?
   // - страница Введите свой PIN-код
@@ -101,13 +89,9 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
     .toHaveText(this.enterPinCodeScreenHeaderRu_Expected);
 
   // 7.Ввести пин-код.
-  
-  
-        // await AppUM.appKeyboardTypeIn(pinCode);
-        await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
-        // ОТКЛЮЧЕНО ДЛЯ БРАУЗЕРСТАК: await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
-  
-  
+  await AppUM.appKeyboardTypeIn(pinCode);
+  // await AppUM.appKeyboardTypeIn(['0','1','2','3']); // для БраузерСтак
+  await HomeM.profileLayout.waitForDisplayed({timeout: GenM.waitTime + 5000});
   // 71.Отображается главный экран приложения (активны навигационная кнопка Home и вкладка Аккаунт), где доступны имя пользователя, текст Общий баланс и... одно из следующего:
   // - сумма общего баланса (если пользователь уже имеет карту банка).
   // - кнопка Заказать или добавить карту (если пользователь пока не имеет карту банка):
