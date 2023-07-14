@@ -18,7 +18,7 @@ const ServM   = require('../../screens/android/ab-services.screen');      // Ser
 // video.setPath(path.join(process.cwd(), "/view_shots"));
 // path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
 
-describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230713| > Тестов 9 (не завершены 6) <', () => {
+describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230714| > Тестов 9 (не завершены 6) <', () => {
 
   let itCounter = 0;
   beforeEach(async () => {
@@ -427,14 +427,14 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
 
   // > Установить тестовые данные
   const randomChars = await AppUM.generateRandomChars(3, 'en');
-  const phoneNum = CardsD.phoneNum_5_hasCards;
-  const phoneNum_pass = CardsD.phoneNum_5_pass;
-  const cardName = CardsD.cardName_Humo_5 + '-' + randomChars;
+  // const phoneNum = CardsD.phoneNum_5_hasCards;
+  // const phoneNum_pass = CardsD.phoneNum_5_pass;
+  // const cardName = CardsD.cardName_Humo_5 + '-' + randomChars;
   // const cardNumber = CardsD.cardNum_Humo_5;
   // const cardExpiry = CardsD.cardExp_Humo_5;
-  // const phoneNum = CardsD.phoneNum_10_hasCards;
-  // const phoneNum_pass = CardsD.phoneNum_10_pass;
-  // const cardName = CardsD.cardName_Humo_10;
+  const phoneNum = CardsD.phoneNum_10_hasCards;
+  const phoneNum_pass = CardsD.phoneNum_10_pass;
+  const cardName = CardsD.cardName_Humo_10 + '-' + randomChars;
   // const cardNumber = CardsD.cardNum_Humo_10;
   // const cardExpiry = CardsD.cardExp_Humo_10;
 
@@ -497,22 +497,28 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   // 6.1.Открыта клавиатура. Курсор установлен в конце текущего названия.
 
   // * Запомнить название и номер карты
-  let name = '';
-  if(await HCardM.cardViewFrontNameField.isExisting()) {
-    name = await HCardM.cardViewFrontNameField.getText();
+  if((await HCardM.cardViewFrontNameField).isDisplayedInViewport) {
+    // * Прокрутить до элемента
+    // const targetElementSelector = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))';
+    // const bottomEl = await $(`android=${targetElementSelector}`);
+    await $(`android=${'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))'}`);
   }
+  const cardName_Initial = await HCardM.cardViewFrontNameField.getText();
   const cardNumber = await HCardM.cardViewFrontNumberField.getText();
-// /*отладка*/ console.log('\n --> cardNumber = ' + cardNumber + '\n');
-// await driver.pause(5000);
+  // /*отладка*/ console.log(
+  //   '\n' + cardName_Initial + ' = cardName_Initial... of card' +
+  //   '\n' + cardNumber + ' = cardNumber' +
+  //   '\n');
+  // /*отладка*/ await driver.pause(5000);
 
   // 7.Изменить название карты.
   // await DSysM.androidKeyboardTypeIn('-123');
   await DSysM.androidKeyboardTypeIn(randomChars);
   // 7.1.Измененное значение отображается:
   // - в поле ввода;
-  await expect(HCardM.cardNameEditField).toHaveText(name + randomChars);
+  await expect(HCardM.cardNameEditField).toHaveText(cardName_Initial + randomChars);
   // - на изображении карты.
-  await expect(HCardM.cardViewFrontNameField).toHaveText(name + randomChars);
+  await expect(HCardM.cardViewFrontNameField).toHaveText(cardName_Initial + randomChars);
   // * hide keyboard (закрывает следующие элементы)
   await driver.hideKeyboard();
 
