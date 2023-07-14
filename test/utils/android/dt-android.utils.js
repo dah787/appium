@@ -35,18 +35,18 @@ async androidPressBackButton(times) {
 async androidKeyboardTypeIn(value) {
   // https://www.programmersought.com/article/9477385345/
   // /*отладка*/ console.log('\n --> value-0 = ' + value + '\n');
-  const str1 = value.at(-1);
-  // /*отладка*/ console.log('\n --> str1 = ' + str1 + '\n');
-  value = str1 + value.slice(0, -1);
-  // /*отладка*/ console.log('\n --> value-1 = ' + value + '\n');
-  let symbolsArray = value.split('');
-  // /*отладка*/ console.log('\n --> symbolsArray = ' + symbolsArray + '\n');
+  // const str1 = value.at(-1);
+  // // /*отладка*/ console.log('\n --> str1 = ' + str1 + '\n');
+  // value = str1 + value.slice(0, -1);
+  // // /*отладка*/ console.log('\n --> value-1 = ' + value + '\n');
+  // let symbolsArray = value.split('');
+  // // /*отладка*/ console.log('\n --> symbolsArray = ' + symbolsArray + '\n');
 
   let metaKey = undefined;
   // symbolsArray.forEach(element => {
-  for (let element of symbolsArray) { // for local use
-  // for (let element of value) { // for app-automate.browserstack.com
+  for (let element of value) { // for (let element of symbolsArray)
     // /*отладка*/ console.log('\n --> symbolsArray.forEach(element) = ' + element + '\n');
+    await driver.pause(250); // замедляем нажатия для приложания, ГитХаб и БраузерСтак
     metaKey = undefined;
     if(element == element.toUpperCase()) metaKey = 1;
     element = element.toLowerCase();

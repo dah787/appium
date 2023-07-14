@@ -30,20 +30,16 @@ get appKeyboardBackspace() {
 /* FUNCTIONS */
 async appKeyboardTypeIn(value) {
   // /*отладка*/ console.log('\n --> value-0 = ' + value + '\n');
-  const str1 = value.at(-1);
-  // /*отладка*/ console.log('\n --> str1 = ' + str1 + '\n');
-  value = str1 + value.slice(0, -1);
-  // /*отладка*/ console.log('\n --> value-1 = ' + value + '\n');
-  let symbolsArray = value.split('');
+  // const str1 = value.at(-1);
+  // // /*отладка*/ console.log('\n --> str1 = ' + str1 + '\n');
+  // value = str1 + value.slice(0, -1);
+  // // /*отладка*/ console.log('\n --> value-1 = ' + value + '\n');
+  // let symbolsArray = value.split('');
 
   // symbolsArray.forEach(element => {
-  for (const element of symbolsArray) {
-    // /*отладка*/ console.log('\n --> symbolsArray.forEach(element) = ' + element + '\n');
-
-    
-          await driver.pause(250); // замедляем нажатия для приложания, ГитХаб и БраузерСтак
-
-    
+  for (const element of value) { // for (const element of symbolsArray) {
+    // /*отладка*/ console.log('\n --> value = ' + element + '\n');
+    await driver.pause(250); // замедляем нажатия для приложания, ГитХаб и БраузерСтак
     switch (element) {
       // цифры
       case '0':
