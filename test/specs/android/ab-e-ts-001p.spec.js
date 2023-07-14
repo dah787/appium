@@ -473,9 +473,8 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
     // let elementAttributeValueCurrent1 = await nextElement1.getAttribute('resource-id');
     // /*отладка*/ console.log('\n --> elementAttributeValueCurrent1 = ' + elementAttributeValueCurrent1 + '\n');
   
-    // await data_array[await AppUM.generateRandomCharsOfSet(1,'012345')].click();
-    await data_array[1].click();
-    
+    await data_array[await AppUM.generateRandomCharsOfSet(1,'012345')].click();
+
     // let nextElement = await element.nextElement();
     // let elementAttributeValueCurrent = await nextElement.getAttribute('resource-id');
 
@@ -535,6 +534,10 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   await HCardM.cardNameEditField.click();
   await DSysM.androidKeyboardTypeIn(cardName);
   // 9.1.Введенное значение отображается:
+  // * Прокрутить до элемента
+  if((await HCardM.cardViewFrontNameField).isDisplayedInViewport) {
+    await $(`android=${'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))'}`);
+  }
   // - в поле ввода;
   await expect(HCardM.cardNameEditField).toHaveText(cardName);
   // - на изображении карты.
