@@ -427,14 +427,14 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
 
   // > Установить тестовые данные
   const randomChars = await AppUM.generateRandomChars(3, 'en');
-  // const phoneNum = CardsD.phoneNum_5_hasCards;
-  // const phoneNum_pass = CardsD.phoneNum_5_pass;
-  // const cardName = CardsD.cardName_Humo_5 + '-' + randomChars;
+  const phoneNum = CardsD.phoneNum_5_hasCards;
+  const phoneNum_pass = CardsD.phoneNum_5_pass;
+  const cardName = CardsD.cardName_Humo_5 + '-' + randomChars;
   // const cardNumber = CardsD.cardNum_Humo_5;
   // const cardExpiry = CardsD.cardExp_Humo_5;
-  const phoneNum = CardsD.phoneNum_10_hasCards;
-  const phoneNum_pass = CardsD.phoneNum_10_pass;
-  const cardName = CardsD.cardName_Humo_10 + '-' + randomChars;
+  // const phoneNum = CardsD.phoneNum_10_hasCards;
+  // const phoneNum_pass = CardsD.phoneNum_10_pass;
+  // const cardName = CardsD.cardName_Humo_10 + '-' + randomChars;
   // const cardNumber = CardsD.cardNum_Humo_10;
   // const cardExpiry = CardsD.cardExp_Humo_10;
 
