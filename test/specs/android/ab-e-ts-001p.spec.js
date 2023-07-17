@@ -473,7 +473,7 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
     // let elementAttributeValueCurrent1 = await nextElement1.getAttribute('resource-id');
     // /*отладка*/ console.log('\n --> elementAttributeValueCurrent1 = ' + elementAttributeValueCurrent1 + '\n');
   
-    await data_array[1].click();
+    await data_array[await AppUM.generateRandomCharsOfSet(1,'012345')].click();
 
     // let nextElement = await element.nextElement();
     // let elementAttributeValueCurrent = await nextElement.getAttribute('resource-id');
@@ -514,6 +514,8 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   // - в поле ввода;
   await expect(HCardM.cardNameEditField).toHaveText(cardName_Initial + randomChars);
   // - на изображении карты.
+    // * Прокрутить до элемента
+    await $(`android=${HCardM.scrollToElement_Up}`);
   await expect(HCardM.cardViewFrontNameField).toHaveText(cardName_Initial + randomChars);
   // * hide keyboard (закрывает следующие элементы)
   await driver.hideKeyboard();
