@@ -81,6 +81,8 @@ get confirmButton() {
 // https://www.automationtestinghub.com/appium-scroll-examples/
 scrollToElement_Up = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))';
 scrollToElement_Up_CardName = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fincube.apexbank.debug:id/bank_card_view_name"))';
+scrollToElement_Middle = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fincube.apexbank.debug:id/input"))';
+scrollToElement_Down = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fincube.apexbank.debug:id/button_confirm"))';
 
 waitForScreenDisplayed_cardSettings() { // wait_for_screen_displayed() {
   this.cardBackgroundImageButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
