@@ -497,12 +497,8 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   // 6.1.Открыта клавиатура. Курсор установлен в конце текущего названия.
 
   // * Запомнить название и номер карты
-  if((await HCardM.cardViewFrontNameField).isDisplayedInViewport) {
     // * Прокрутить до элемента
-    // const targetElementSelector = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))';
-    // const bottomEl = await $(`android=${targetElementSelector}`);
-    await $(`android=${'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))'}`);
-  }
+    await $(`android=${HCardM.scrollToElement_Up}`);
   const cardName_Initial = await HCardM.cardViewFrontNameField.getText();
   const cardNumber = await HCardM.cardViewFrontNumberField.getText();
   // /*отладка*/ console.log(
@@ -534,13 +530,13 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
   await HCardM.cardNameEditField.click();
   await DSysM.androidKeyboardTypeIn(cardName);
   // 9.1.Введенное значение отображается:
-  // * Прокрутить до элемента
-  if((await HCardM.cardViewFrontNameField).isDisplayedInViewport) {
-    await $(`android=${'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))'}`);
-  }
   // - в поле ввода;
   await expect(HCardM.cardNameEditField).toHaveText(cardName);
   // - на изображении карты.
+    // * Прокрутить до элемента
+    // if(!(await HCardM.cardViewFrontNameField).isDisplayedInViewport) {
+      await $(`android=${HCardM.scrollToElement_Up}`);
+    // }
   await expect(HCardM.cardViewFrontNameField).toHaveText(cardName);
   // * hide keyboard (закрывает следующие элементы)
   await driver.hideKeyboard();
