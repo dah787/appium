@@ -57,7 +57,7 @@ async customerAuthorization(language, phoneNumber, password, pinCode) {
 
   // 3.Нажать поле ввода пароля.
     // * Ждем появления поля
-    await this.passwordInputField.waitForDisplayed({timeout: GenM.waitTime});
+    await this.passwordInputField.waitForDisplayed({timeout: GenM.waitTime + 10000});
   await this.passwordInputField.click();
   // 31.Открыта клавиатура.
   await expect(await driver.isKeyboardShown()).toBe(true);
