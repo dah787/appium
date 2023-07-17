@@ -59,9 +59,6 @@ get cardSettingsButton() {
   return $('//android.widget.TextView[@text="Настройка"]');}
 
 // экран-31 (б/и) действий с картой > экран (б/и) настройки карты
-waitForScreenDisplayed_cardSettings() { // wait_for_screen_displayed() {
-  this.cardBackgroundImageButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
-}
 get cardViewFrontBalanceField() {
   return $('//*[@resource-id="com.fincube.apexbank.debug:id/bank_card_view_balance"]');}
 get cardViewFrontNumberField() {
@@ -80,6 +77,14 @@ get cardNameEditFieldClearButton() {
   return $('//*[@resource-id="com.fincube.apexbank.debug:id/clear_text_image"]');}
 get confirmButton() {
   return $('//*[@resource-id="com.fincube.apexbank.debug:id/button_confirm"]');}
+
+// https://www.automationtestinghub.com/appium-scroll-examples/
+scrollToElement_Up = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("APEXBANK").className("android.widget.TextView"))';
+scrollToElement_Up_CardName = 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId("com.fincube.apexbank.debug:id/bank_card_view_name"))';
+
+waitForScreenDisplayed_cardSettings() { // wait_for_screen_displayed() {
+  this.cardBackgroundImageButton.waitForDisplayed({timeout: GenM.waitTime + 15000});
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
