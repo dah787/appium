@@ -18,7 +18,7 @@ const ServM   = require('../../screens/android/ab-services.screen');      // Ser
 // video.setPath(path.join(process.cwd(), "/view_shots"));
 // path.join(process.cwd(),'test/specs/android/ab-e-ts-001p.spec.js')
 
-describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230714| > Тестов 9 (не завершены 6) <', () => {
+describe('ab-e-ts-001p: Тестирование процессов (дымовое) |вер.20230717| > Тестов 9 (не завершены 6) <', () => {
 
   let itCounter = 0;
   beforeEach(async () => {
@@ -473,7 +473,7 @@ it.only('ab-e-tc-004p: Редактирование карты', async () => {
     // let elementAttributeValueCurrent1 = await nextElement1.getAttribute('resource-id');
     // /*отладка*/ console.log('\n --> elementAttributeValueCurrent1 = ' + elementAttributeValueCurrent1 + '\n');
   
-    await data_array[1].click();
+    await data_array[await AppUM.generateRandomCharsOfSet(1,'012345')].click();
 
     // let nextElement = await element.nextElement();
     // let elementAttributeValueCurrent = await nextElement.getAttribute('resource-id');
@@ -1150,6 +1150,7 @@ it.skip('перенесено > ab-e-tc-009p: Показать или скрыт
 
 // * Пауза для контроля экрана
 // await driver.pause(5000);
+// await HCardM.cardBalance.waitForDisplayed({timeout: GenM.waitTime});
 // *.Нажать кнопку Назад
 // await driver.back();
 // await DSysM.androidPressBackButton(1);
