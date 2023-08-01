@@ -31,8 +31,8 @@ config.capabilities = [{
 
   "appium:platformVersion": "10.0",
   // "appium:deviceName": "Nexus S v.10",
-  // "appium:deviceName": "Pixel 4 v.10",
-  "appium:deviceName": "hudson_ru-RU_440_1080x2200_android-29_x86",
+  "appium:deviceName": "Pixel 4 v.10",
+  // "appium:deviceName": "hudson_ru-RU_440_1080x2200_android-29_x86",
   // "appium:platformVersion": "11.0",
   // "appium:deviceName": "Pixel 4 v.11",
   
